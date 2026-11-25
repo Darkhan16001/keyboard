@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KEYBOARD UP PRO 8.0</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div id="app">
+
+    <aside id="sidebar">
+
+        <div class="brand">
+            <span class="logo">⌨</span>
+            <div>
+                <b>KEYBOARD</b>
+                <small>UP PRO 8.0</small>
+            </div>
+        </div>
+
+        <label data-t="interface"></label>
+        <select id="ui">
+            <option value="ru">Русский</option>
+            <option value="kk">Қазақша</option>
+            <option value="en">English</option>
+        </select>
+
+        <label data-t="language"></label>
+        <select id="language">
+            <option value="ru">Русский</option>
+            <option value="kk">Қазақша</option>
+            <option value="en">English</option>
+        </select>
+
+        <label data-t="rgb"></label>
+        <select id="rgb">
+            <option value="rainbow" data-t="rainbow"></option>
+            <option value="reactive" data-t="reactive"></option>
+            <option value="off" data-t="off"></option>
+        </select>
+
+        <label class="check">
+            <input id="sound" type="checkbox">
+            <span data-t="sound"></span>
+        </label>
+
+        <label class="check">
+            <input id="hints" type="checkbox">
+            <span data-t="hints"></span>
+        </label>
+
+        <div class="side-progress">
+            <small data-t="completed"></small>
+            <strong id="completed">0 / 100</strong>
+            <div class="progress">
+                <div id="totalBar"></div>
+            </div>
+            <small data-t="record"></small>
+            <strong id="record">0 WPM</strong>
+        </div>
+
+        <div class="menu-tools">
+            <h3>
+                <span data-t="pages"></span>
+                <span class="purple" id="pageCount">100</span>
+            </h3>
+
+            <input id="search" type="search" autocomplete="off">
+
+            <div class="flex">
+                <button id="expand" data-t="expand"></button>
+                <button id="collapse" data-t="collapse"></button>
+            </div>
+        </div>
+
+        <nav id="menu"></nav>
+
+        <footer>BY DARKHAN</footer>
+
+    </aside>
+
+    <main>
+
+        <div class="screen-toolbar">
+
+            <button id="toggleMenu">☰</button>
+
+            <button id="historyButton" data-t="history"></button>
+
+            <button id="editorButton" data-t="editor"></button>
+
+            <div class="spacer"></div>
+
+            <button id="zoomOut">−</button>
+
+            <input id="zoom" type="range"
+                   min="50" max="200" step="10" value="100">
+
+            <button id="zoomReset">100%</button>
+
+            <button id="zoomIn">+</button>
+
+            <button id="fullscreen" aria-label="Fullscreen">⛶</button>
+
+        </div>
+
+        <div id="workspace">
+
+            <header>
+                <div>
+                    <small class="eyebrow">
+                        TYPING & SCIENCE ACADEMY
+                    </small>
+                    <h1 id="title"></h1>
+                    <p id="description"></p>
+                </div>
+
+                <div class="clock">
+                    <small>ALMATY</small>
+                    <strong id="clock"></strong>
+                </div>
+            </header>
+
+            <section id="training">
+
+                <div class="mode-bar">
+                    <button data-mode="learn" class="active">
+                        📚 <span data-t="learn"></span>
+                    </button>
+
+                    <button data-mode="practice">
+                        🎯 <span data-t="practice"></span>
+                    </button>
+
+                    <button data-mode="speed">
+                        ⚡ <span data-t="speed"></span>
+                    </button>
+                </div>
+
+                <div class="stats">
+                    <article>
+                        <small data-t="speed"></small>
+                        <strong id="wpm">0</strong>
+                        <span id="unit">WPM</span>
+                    </article>
+
+                    <article>
+                        <small data-t="accuracy"></small>
+                        <strong id="accuracy">100%</strong>
+                    </article>
+
+                    <article>
+                        <small data-t="characters"></small>
+                        <strong id="cpm">0</strong>
+                        <span>CPM / KPM</span>
+                    </article>
+
+                    <article>
+                        <small data-t="errors"></small>
+                        <strong id="errors">0</strong>
+                    </article>
+
+                    <article>
+                        <small data-t="time"></small>
+                        <strong id="timer">00:00</strong>
+                    </article>
+                </div>
+
+                <section class="panel">
+
+                    <div class="flex toolbar">
+
+                        <select id="duration" hidden>
+                            <option value="15">15 s</option>
+                            <option value="30">30 s</option>
+                            <option value="60" selected>60 s</option>
+                            <option value="120">120 s</option>
+                            <option value="180">180 s</option>
+                        </select>
+
+                        <select id="exam" hidden></select>
+
+                        <button id="restart" data-t="restart"></button>
+                        <button id="previous" data-t="previous"></button>
+                        <button id="next" class="primary" data-t="next"></button>
+
+                    </div>
+
+                    <div class="progress">
+                        <div id="bar"></div>
+                    </div>
+
+                    <div class="heading">
+                        <h3 id="lessonName"></h3>
+                        <small id="counter">0 / 0</small>
+                    </div>
+
+                    <p id="rule"></p>
+
+                    <div id="formulaBox" hidden>
+
+                        <small data-t="sample"></small>
+                        <div id="formulaTarget" class="formula"></div>
+
+                        <small data-t="yourFormula"></small>
+                        <div id="formulaLive" class="formula live"></div>
+
+                    </div>
+
+                    <div id="typing" class="typing"
+                         tabindex="0" aria-label="Typing exercise"></div>
+
+                    <p id="instruction"></p>
+                    <p id="layoutNote"></p>
+
+                </section>
+
+                <section class="panel">
+
+                    <div class="heading">
+                        <h3 data-t="keyboard"></h3>
+                        <b id="layoutName" class="purple"></b>
+                    </div>
+
+                    <div class="keyboard-scroll">
+                        <div class="keyboard-layout">
+                            <div id="keyboard"></div>
+                            <div id="navigation"></div>
+                            <div id="numpad"></div>
+                        </div>
+                    </div>
+
+                    <div class="hint-grid" id="hintBox">
+
+                        <article>
+                            <small data-t="nextKey"></small>
+                            <strong id="nextKey">—</strong>
+                        </article>
+
+                        <article>
+                            <small data-t="finger"></small>
+                            <strong id="finger">—</strong>
+                        </article>
+
+                        <article>
+                            <small data-t="combination"></small>
+                            <strong id="combination">—</strong>
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <section class="panel" id="handsBox">
+
+                    <h3 data-t="hands"></h3>
+
+                    <div class="hands">
+                        <article>
+                            <small data-t="left"></small>
+                            <div id="leftHand" class="finger-row"></div>
+                        </article>
+
+                        <article>
+                            <small data-t="right"></small>
+                            <div id="rightHand" class="finger-row"></div>
+                        </article>
+                    </div>
+
+                    <p data-t="handRule"></p>
+
+                </section>
+
+            </section>
+
+            <!-- РЕДАКТОР МАТЕМАТИКИ И ХИМИИ -->
+
+            <section id="editor" hidden>
+
+                <div class="panel">
+
+                    <h2 data-t="editor"></h2>
+
+                    <p data-t="syntax"></p>
+
+                    <div class="syntax-grid">
+
+                        <button data-insert="3/4">3/4</button>
+                        <button data-insert="x^2">x²</button>
+                        <button data-insert="a_n">aₙ</button>
+                        <button data-insert="H_2O">H₂O</button>
+                        <button data-insert="SO_4^{2-}">SO₄²⁻</button>
+                        <button data-insert="sqrt(16)">√16</button>
+                        <button data-insert="\alpha">α</button>
+                        <button data-insert="\beta">β</button>
+                        <button data-insert="\pi">π</button>
+                        <button data-insert="\times">×</button>
+                        <button data-insert="\pm">±</button>
+                        <button data-insert="\rightarrow">→</button>
+
+                    </div>
+
+                    <textarea id="formulaInput" rows="5"
+                              maxlength="2000">H_2SO_4 + H_2O</textarea>
+
+                    <div class="formula" id="formulaPreview"></div>
+
+                    <div class="flex">
+                        <button id="trainFormula" class="primary"
+                                data-t="trainFormula"></button>
+
+                        <button id="selectFormula"
+                                data-t="selectFormula"></button>
+
+                        <button id="backEditor" data-t="back"></button>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- СТАТИСТИКА -->
+
+            <section id="history" hidden>
+
+                <div class="panel">
+
+                    <h2 data-t="history"></h2>
+
+                    <div class="hint-grid">
+
+                        <article>
+                            <small data-t="sessions"></small>
+                            <strong id="sessions">0</strong>
+                        </article>
+
+                        <article>
+                            <small data-t="average"></small>
+                            <strong id="average">0 WPM</strong>
+                        </article>
+
+                        <article>
+                            <small data-t="examsPassed"></small>
+                            <strong id="examsPassed">0</strong>
+                        </article>
+
+                    </div>
+
+                    <h3 data-t="weak"></h3>
+                    <div id="weakKeys" class="weak-keys"></div>
+
+                    <div class="flex">
+                        <button id="trainWeak" data-t="trainWeak"></button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-t="date"></th>
+                                    <th data-t="pages"></th>
+                                    <th data-t="mode"></th>
+                                    <th data-t="speed"></th>
+                                    <th data-t="accuracy"></th>
+                                    <th data-t="errors"></th>
+                                    <th data-t="result"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyBody"></tbody>
+                        </table>
+                    </div>
+
+                    <button class="danger" id="clear" data-t="clear"></button>
+                    <button id="backHistory" data-t="back"></button>
+
+                </div>
+
+            </section>
+
+            <footer>KEYBOARD UP PRO 8.0 · BY DARKHAN</footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="modal" class="modal" hidden>
+
+    <div class="modal-card">
+
+        <div class="trophy">🏆</div>
+        <h2 data-t="done"></h2>
+        <p id="resultText"></p>
+
+        <div class="hint-grid">
+            <article>
+                <small data-t="speed"></small>
+                <strong id="resultSpeed"></strong>
+            </article>
+
+            <article>
+                <small data-t="accuracy"></small>
+                <strong id="resultAccuracy"></strong>
+            </article>
+
+            <article>
+                <small data-t="errors"></small>
+                <strong id="resultErrors"></strong>
+            </article>
+        </div>
+
+        <button id="resultNext" class="primary" data-t="next"></button>
+        <button id="repeat" data-t="restart"></button>
+        <button id="close" data-t="close"></button>
+
+    </div>
+
+</div>
+
+</body>
+</html>
